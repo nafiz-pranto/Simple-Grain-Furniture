@@ -1,0 +1,6 @@
+{
+  "name": "Simple Grain Furniture",
+  "description": "A luxury Bangladeshi furniture brand crafted for timeless living, featuring architectural forms, honest materials, and quiet luxury e-commerce experiences.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,144 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-serif: 'Cormorant Garamond', Georgia, serif;
+    --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    
+    /* Header Architectural Dimensions */
+    --header-height: 68px;
+    --header-height-scrolled: 62px;
+    --header-height-mobile: 58px;
+    
+    /* Warm Ivory & Refined Palette */
+    --color-cream-50: #FAF8F5;
+    --color-cream-100: #F6F3ED;
+    --color-cream-200: #EFEAE1;
+    --color-cream-300: #E5DECF;
+    --color-cream-400: #D8CEBE;
+    
+    --color-charcoal-950: #141311;
+    --color-charcoal-900: #1C1A18;
+    --color-charcoal-800: #292623;
+    --color-charcoal-700: #3D3934;
+    --color-charcoal-600: #5C564E;
+    --color-charcoal-500: #7E776C;
+    --color-charcoal-400: #A29B8F;
+    
+    --color-amber-muted: #8E7048;
+    --color-amber-soft: #B89C76;
+    --color-amber-light: #DFCABA;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--color-cream-50);
+    color: var(--color-charcoal-900);
+    overflow-x: hidden;
+    letter-spacing: -0.01em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background-color: #E2D5C3;
+    color: #141311;
+  }
+
+  h1, h2, h3, h4, .font-serif {
+    font-family: var(--font-serif);
+    letter-spacing: -0.02em;
+  }
+}
+
+/* Custom subtle luxury scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #F6F3ED;
+}
+::-webkit-scrollbar-thumb {
+  background: #D8CEBE;
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #B4A794;
+}
+
+/* Luxury Image Scale & Transitions */
+.editorial-image-container {
+  overflow: hidden;
+  position: relative;
+}
+.editorial-image-container img {
+  transition: transform 1.4s cubic-bezier(0.19, 1, 0.22, 1), filter 1s cubic-bezier(0.19, 1, 0.22, 1);
+}
+.editorial-image-container:hover img {
+  transform: scale(1.035);
+}
+
+/* Backdrop blur */
+.backdrop-luxury {
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+/* Hairline dividers */
+.border-hairline {
+  border-color: rgba(28, 26, 24, 0.08);
+}
+.border-hairline-dark {
+  border-color: rgba(250, 248, 245, 0.12);
+}
+
+/* Keyframes for calm luxury reveals */
+@keyframes heroReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroImageScale {
+  0% {
+    transform: scale(1.05);
+    filter: brightness(0.85);
+  }
+  100% {
+    transform: scale(1);
+    filter: brightness(0.92);
+  }
+}
+
+.animate-hero-text {
+  animation: heroReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-hero-img {
+  animation: heroImageScale 2.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Custom delicate underline transition */
+.luxury-link {
+  position: relative;
+  display: inline-block;
+}
+.luxury-link::after {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 1px;
+  bottom: -2px;
+  left: 0;
+  background-color: currentColor;
+  transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.luxury-link:hover::after {
+  width: 100%;
+}
