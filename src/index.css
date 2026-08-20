@@ -30,7 +30,23 @@
     --color-amber-light: #DFCABA;
   }
 
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    -webkit-text-size-adjust: 100%;
+  }
+
   body {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
     font-family: var(--font-sans);
     background-color: var(--color-cream-50);
     color: var(--color-charcoal-900);
@@ -38,6 +54,15 @@
     letter-spacing: -0.01em;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+
+  #root {
+    width: 100%;
+    max-width: 100%;
+    min-height: 100vh;
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
   }
 
   ::selection {

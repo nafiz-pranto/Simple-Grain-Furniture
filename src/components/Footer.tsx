@@ -85,7 +85,7 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Navigation Columns */}
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-10 text-xs">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 sm:gap-10 text-xs">
           
           {/* Col 1: Living Archetypes */}
           <div className="space-y-4">
@@ -185,7 +185,7 @@ export const Footer: React.FC = () => {
           </div>
 
           {/* Col 4: Studio Location */}
-          <div className="space-y-4 col-span-2 lg:col-span-2">
+          <div className="space-y-4 sm:col-span-2 lg:col-span-2">
             <span className="text-[10px] uppercase tracking-[0.25em] text-[#DFCABA] font-mono block">
               Dhaka Flagship Studio
             </span>
@@ -194,7 +194,7 @@ export const Footer: React.FC = () => {
               <p className="text-xs text-[#FAF8F5] font-mono pt-1">
                 Studio Hours: Sat – Thu, 10:30 AM – 8:30 PM (Private appointments welcomed)
               </p>
-              <p className="text-xs text-[#DFCABA] font-mono">
+              <p className="text-xs text-[#DFCABA] font-mono break-all sm:break-normal">
                 concierge@simplegrainfurniture.com • +880 1711 000000
               </p>
             </div>
@@ -203,11 +203,11 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Bottom Baseline Bar */}
-        <div className="pt-12 border-t border-[#292623] flex flex-col sm:flex-row items-center justify-between text-[11px] text-[#7E776C] font-mono gap-4">
-          <div>
+        <div className="pt-12 border-t border-[#292623] flex flex-col sm:flex-row items-center justify-between text-[11px] text-[#7E776C] font-mono gap-4 text-center sm:text-left">
+          <div className="break-words max-w-full">
             © {new Date().getFullYear()} Simple Grain Furniture Atelier Ltd. All rights reserved.
           </div>
-          <div className="flex items-center space-x-6">
+          <div className="flex flex-wrap items-center justify-center sm:justify-end gap-x-6 gap-y-2">
             <span>Privacy Policy</span>
             <span>Terms of Service</span>
             <span>Made with Integrity in Bangladesh</span>
