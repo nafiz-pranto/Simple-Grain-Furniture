@@ -71,14 +71,14 @@ export const Header: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 h-full flex items-center justify-between">
         
         {/* Mobile Menu Button */}
-        <div className="flex items-center lg:hidden">
+        <div className="flex items-center lg:hidden -ml-2">
           <button
             id="mobile-menu-toggle-btn"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-1.5 text-[#141311] hover:text-[#8E7048] transition-colors focus:outline-none cursor-pointer"
+            className="w-11 h-11 flex items-center justify-center text-[#141311] hover:text-[#8E7048] transition-colors focus:outline-none cursor-pointer rounded-full active:bg-[#E5DECF]/40"
             aria-label="Toggle navigation menu"
           >
-            {mobileMenuOpen ? <X size={19} /> : <Menu size={19} />}
+            {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
 
@@ -177,24 +177,24 @@ export const Header: React.FC = () => {
         </div>
 
         {/* Mobile Right Icons */}
-        <div className="flex items-center space-x-2.5 lg:hidden">
+        <div className="flex items-center space-x-1 lg:hidden -mr-2">
           <button
             id="mobile-search-btn"
             onClick={() => setIsSearchOpen(true)}
-            className="p-1.5 text-[#5C564E] hover:text-[#141311]"
+            className="w-11 h-11 flex items-center justify-center text-[#5C564E] hover:text-[#141311] active:bg-[#E5DECF]/40 rounded-full transition-colors"
             aria-label="Search"
           >
-            <Search size={17} />
+            <Search size={18} />
           </button>
           <button
             id="mobile-cart-btn"
             onClick={() => setIsCartOpen(true)}
-            className="p-1.5 text-[#141311] relative"
+            className="w-11 h-11 flex items-center justify-center text-[#141311] relative active:bg-[#E5DECF]/40 rounded-full transition-colors"
             aria-label="Cart"
           >
-            <ShoppingBag size={17} />
+            <ShoppingBag size={18} />
             {cartCount > 0 && (
-              <span className="absolute -top-1 -right-1 w-3.5 h-3.5 bg-[#141311] text-[#FAF8F5] text-[8.5px] rounded-full flex items-center justify-center font-mono">
+              <span className="absolute top-2 right-2 w-4 h-4 bg-[#141311] text-[#FAF8F5] text-[9px] rounded-full flex items-center justify-center font-mono font-medium">
                 {cartCount}
               </span>
             )}
@@ -205,42 +205,64 @@ export const Header: React.FC = () => {
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="lg:hidden fixed inset-x-0 top-[56px] sm:top-[62px] bottom-0 bg-[#FAF8F5]/98 backdrop-luxury border-b border-[#E5DECF] shadow-xl px-6 py-6 transition-all z-50 overflow-y-auto">
-          <div className="flex flex-col space-y-4 max-w-sm mx-auto">
+        <div
+          className="lg:hidden fixed inset-x-0 top-[56px] sm:top-[62px] bottom-0 bg-[#FAF8F5]/98 backdrop-luxury border-b border-[#E5DECF] shadow-2xl px-6 py-6 transition-all z-50 overflow-y-auto flex flex-col justify-between"
+          style={{ paddingBottom: 'max(1.5rem, env(safe-area-inset-bottom))' }}
+        >
+          <div className="flex flex-col space-y-2 max-w-sm mx-auto w-full">
             <div className="text-[9.5px] tracking-[0.25em] text-[#8E7048] uppercase font-mono pb-2 border-b border-[#E5DECF]">
-              Simple Grain Navigation
+              Simple Grain Atelier
             </div>
+            
             {navLinks.map((link) => (
               <button
                 key={link.label}
                 onClick={() => handleNavClick(link.page, link.category)}
-                className={`text-left text-base font-serif tracking-wide py-1 flex items-center justify-between cursor-pointer ${
+                className={`text-left text-lg font-serif tracking-wide min-h-[44px] flex items-center justify-between cursor-pointer active:text-[#8E7048] transition-colors ${
                   currentPage === link.page ? 'text-[#8E7048] font-medium' : 'text-[#141311]'
                 }`}
               >
                 <span>{link.label}</span>
-                <ArrowRight size={13} className="text-[#8E7048] opacity-60" />
+                <ArrowRight size={14} className="text-[#8E7048] opacity-60" />
               </button>
             ))}
 
-            <div className="pt-4 border-t border-[#E5DECF] flex flex-col space-y-3">
+            {/* Quick Category Chips in Menu */}
+            <div className="pt-3 pb-2 border-t border-[#E5DECF]">
+              <span className="text-[9.5px] tracking-[0.2em] text-[#7E776C] uppercase font-mono block mb-2">
+                Living Spaces:
+              </span>
+              <div className="flex flex-wrap gap-1.5">
+                {['Living Room', 'Dining', 'Bedroom', 'Office', 'Storage'].map((cat) => (
+                  <button
+                    key={cat}
+                    onClick={() => handleNavClick('collection', cat)}
+                    className="px-3 py-1.5 bg-[#F6F3ED] border border-[#E5DECF] text-xs text-[#5C564E] hover:text-[#141311] rounded-xs font-sans"
+                  >
+                    {cat}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className="pt-3 border-t border-[#E5DECF] flex flex-col space-y-3">
               <button
                 onClick={() => {
                   setMobileMenuOpen(false);
                   setIsWishlistOpen(true);
                 }}
-                className="flex items-center justify-between text-xs text-[#5C564E] py-1 cursor-pointer"
+                className="flex items-center justify-between text-xs text-[#5C564E] min-h-[44px] py-1 cursor-pointer"
               >
                 <span className="flex items-center space-x-2">
-                  <Heart size={14} />
+                  <Heart size={16} />
                   <span>Saved Designs</span>
                 </span>
-                <span className="font-mono text-xs text-[#7E776C]">({wishlistIds.length})</span>
+                <span className="font-mono text-xs text-[#7E776C]">({wishlistIds.length} pieces)</span>
               </button>
 
               <button
                 onClick={() => handleNavClick('contact')}
-                className="w-full py-3 bg-[#141311] text-[#FAF8F5] text-xs uppercase tracking-[0.2em] font-semibold rounded-xs text-center mt-2 cursor-pointer"
+                className="w-full py-3.5 bg-[#141311] text-[#FAF8F5] text-xs uppercase tracking-[0.2em] font-semibold rounded-xs text-center cursor-pointer shadow-sm active:bg-[#3D3934]"
               >
                 Book Studio Consultation
               </button>

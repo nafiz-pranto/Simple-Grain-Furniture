@@ -408,38 +408,56 @@ export const CollectionPage: React.FC = () => {
 
       {/* Mobile Filter Drawer */}
       {isMobileFilterOpen && (
-        <div className="lg:hidden fixed inset-0 z-50 bg-[#141311]/60 backdrop-luxury flex justify-end">
-          <div className="w-full max-w-xs bg-[#FAF8F5] h-full p-6 flex flex-col justify-between overflow-y-auto">
-            
+        <div
+          className="lg:hidden fixed inset-0 z-50 bg-[#141311]/60 backdrop-luxury flex justify-end animate-fade-in"
+          onClick={() => setIsMobileFilterOpen(false)}
+        >
+          <div
+            className="w-full max-w-xs bg-[#FAF8F5] h-full p-6 flex flex-col justify-between overflow-y-auto shadow-2xl animate-slide-left"
+            onClick={(e) => e.stopPropagation()}
+            style={{ paddingBottom: 'max(1.5rem, env(safe-area-inset-bottom))' }}
+          >
             <div className="space-y-6">
               <div className="flex items-center justify-between border-b border-[#E5DECF] pb-4">
                 <h3 className="font-serif text-xl text-[#141311] font-medium">Filter Catalog</h3>
-                <button onClick={() => setIsMobileFilterOpen(false)}>
+                <button
+                  onClick={() => setIsMobileFilterOpen(false)}
+                  className="w-10 h-10 flex items-center justify-center -mr-2 text-[#7E776C] hover:text-[#141311] rounded-full active:bg-[#E5DECF]/40"
+                  aria-label="Close filters"
+                >
                   <X size={18} />
                 </button>
               </div>
 
               {/* Search */}
               <div>
-                <label className="block text-xs uppercase tracking-wider text-[#141311] mb-1">Search</label>
+                <label className="block text-xs uppercase tracking-wider text-[#141311] mb-1 font-mono">
+                  Search
+                </label>
                 <input
                   type="text"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="Filter designs..."
-                  className="w-full bg-[#F6F3ED] border border-[#E5DECF] px-3 py-2 text-xs"
+                  className="w-full bg-[#F6F3ED] border border-[#E5DECF] px-3.5 py-2.5 text-xs text-[#141311] rounded-xs focus:outline-none focus:border-[#141311]"
                 />
               </div>
 
               {/* Material */}
-              <div className="space-y-2">
-                <label className="block text-xs uppercase tracking-wider text-[#141311]">Materials</label>
+              <div className="space-y-1">
+                <label className="block text-xs uppercase tracking-wider text-[#141311] mb-2 font-mono">
+                  Materials
+                </label>
                 {availableMaterials.map((mat) => (
-                  <label key={mat} className="flex items-center space-x-2 text-xs text-[#5C564E]">
+                  <label
+                    key={mat}
+                    className="flex items-center space-x-3 min-h-[38px] text-xs text-[#5C564E] active:text-[#141311] cursor-pointer"
+                  >
                     <input
                       type="checkbox"
                       checked={selectedMaterials.includes(mat)}
                       onChange={() => toggleMaterial(mat)}
+                      className="w-4 h-4 rounded-xs border-[#E5DECF] text-[#141311] focus:ring-0"
                     />
                     <span>{mat}</span>
                   </label>
@@ -447,10 +465,10 @@ export const CollectionPage: React.FC = () => {
               </div>
 
               {/* Price */}
-              <div className="space-y-2">
+              <div className="space-y-2 pt-2 border-t border-[#E5DECF]">
                 <div className="flex justify-between text-xs">
-                  <span>Max Price:</span>
-                  <span className="font-mono text-[#8E7048]">{formatPrice(priceMax)}</span>
+                  <span className="font-mono uppercase text-[#7E776C]">Max Price:</span>
+                  <span className="font-mono text-[#8E7048] font-medium">{formatPrice(priceMax)}</span>
                 </div>
                 <input
                   type="range"
@@ -459,34 +477,37 @@ export const CollectionPage: React.FC = () => {
                   step="5000"
                   value={priceMax}
                   onChange={(e) => setPriceMax(Number(e.target.value))}
-                  className="w-full accent-[#141311]"
+                  className="w-full accent-[#141311] cursor-pointer"
                 />
               </div>
 
               {/* In Stock */}
-              <label className="flex items-center space-x-2 text-xs text-[#141311]">
-                <input
-                  type="checkbox"
-                  checked={inStockOnly}
-                  onChange={(e) => setInStockOnly(e.target.checked)}
-                />
-                <span>Ready to Ship Only</span>
-              </label>
+              <div className="pt-2 border-t border-[#E5DECF]">
+                <label className="flex items-center space-x-3 min-h-[40px] text-xs text-[#141311] cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={inStockOnly}
+                    onChange={(e) => setInStockOnly(e.target.checked)}
+                    className="w-4 h-4 rounded-xs border-[#E5DECF] text-[#141311] focus:ring-0"
+                  />
+                  <span className="font-medium">Ready to Ship Only</span>
+                </label>
+              </div>
             </div>
 
             <div className="pt-6 border-t border-[#E5DECF] space-y-2">
               <button
                 onClick={() => setIsMobileFilterOpen(false)}
-                className="w-full py-3.5 bg-[#141311] text-[#FAF8F5] text-xs uppercase tracking-wider font-medium"
+                className="w-full py-3.5 bg-[#141311] text-[#FAF8F5] text-xs uppercase tracking-wider font-medium rounded-xs active:bg-[#3D3934]"
               >
                 Apply Filters ({filteredProducts.length})
               </button>
               {hasActiveFilters && (
                 <button
                   onClick={handleClearFilters}
-                  className="w-full py-2 text-xs text-[#7E776C] hover:text-[#141311]"
+                  className="w-full py-2.5 text-xs text-[#7E776C] hover:text-[#141311] min-h-[40px]"
                 >
-                  Clear All
+                  Clear All Filters
                 </button>
               )}
             </div>

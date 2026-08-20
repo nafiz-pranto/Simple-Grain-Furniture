@@ -73,10 +73,10 @@ export const CartDrawer: React.FC = () => {
         onClick={(e) => e.stopPropagation()}
       >
         {/* Drawer Header */}
-        <div className="p-6 border-b border-[#EFEAE1] flex items-center justify-between bg-[#FBF9F5]">
+        <div className="p-4 sm:p-6 border-b border-[#EFEAE1] flex items-center justify-between bg-[#FBF9F5]">
           <div className="flex items-center space-x-2">
             <ShoppingBag size={18} className="text-[#191816]" />
-            <h3 className="font-serif text-xl text-[#191816] font-medium">Shopping Bag</h3>
+            <h3 className="font-serif text-lg sm:text-xl text-[#191816] font-medium">Shopping Bag</h3>
             <span className="text-xs font-mono text-[#7A746B]">
               ({cart.reduce((s, i) => s + i.quantity, 0)} {cart.reduce((s, i) => s + i.quantity, 0) === 1 ? 'piece' : 'pieces'})
             </span>
@@ -84,7 +84,7 @@ export const CartDrawer: React.FC = () => {
           <button
             id="close-cart-btn"
             onClick={() => setIsCartOpen(false)}
-            className="p-1.5 text-[#7A746B] hover:text-[#191816] transition-colors rounded-full hover:bg-[#EFEAE1]"
+            className="w-10 h-10 flex items-center justify-center -mr-2 text-[#7A746B] hover:text-[#191816] transition-colors rounded-full hover:bg-[#EFEAE1] active:bg-[#E2D9CA]"
             aria-label="Close shopping bag"
           >
             <X size={18} />
@@ -187,16 +187,18 @@ export const CartDrawer: React.FC = () => {
                     <div className="flex items-center border border-[#E2D9CA] rounded-xs bg-[#FDFBF7]">
                       <button
                         onClick={() => updateCartQuantity(item.id, item.quantity - 1)}
-                        className="px-2.5 py-1 text-xs text-[#57524A] hover:text-[#191816]"
+                        className="w-8 h-8 flex items-center justify-center text-xs text-[#57524A] hover:text-[#191816] active:bg-[#EFEAE1]"
+                        aria-label="Decrease quantity"
                       >
                         -
                       </button>
-                      <span className="px-2.5 py-1 text-xs font-mono text-[#191816] min-w-[24px] text-center">
+                      <span className="px-2 text-xs font-mono text-[#191816] min-w-[24px] text-center">
                         {item.quantity}
                       </span>
                       <button
                         onClick={() => updateCartQuantity(item.id, item.quantity + 1)}
-                        className="px-2.5 py-1 text-xs text-[#57524A] hover:text-[#191816]"
+                        className="w-8 h-8 flex items-center justify-center text-xs text-[#57524A] hover:text-[#191816] active:bg-[#EFEAE1]"
+                        aria-label="Increase quantity"
                       >
                         +
                       </button>
@@ -214,7 +216,10 @@ export const CartDrawer: React.FC = () => {
 
         {/* Drawer Footer & Checkout */}
         {cart.length > 0 && (
-          <div className="p-6 bg-[#FBF9F5] border-t border-[#EFEAE1] space-y-4">
+          <div
+            className="p-5 sm:p-6 bg-[#FBF9F5] border-t border-[#EFEAE1] space-y-4"
+            style={{ paddingBottom: 'max(1.25rem, env(safe-area-inset-bottom))' }}
+          >
             
             {/* Promo Code Input */}
             <form onSubmit={handleApplyPromo} className="flex space-x-2">
@@ -224,12 +229,12 @@ export const CartDrawer: React.FC = () => {
                 onChange={(e) => setPromoCode(e.target.value)}
                 placeholder="Promo code (e.g. TIMELESS)"
                 disabled={promoApplied}
-                className="flex-1 bg-[#FDFBF7] border border-[#E2D9CA] text-xs px-3 py-2 rounded-xs uppercase tracking-wider focus:outline-none focus:border-[#191816]"
+                className="flex-1 bg-[#FDFBF7] border border-[#E2D9CA] text-xs px-3 py-2.5 rounded-xs uppercase tracking-wider focus:outline-none focus:border-[#191816]"
               />
               <button
                 type="submit"
                 disabled={promoApplied}
-                className="px-4 py-2 bg-[#262421] text-[#FDFBF7] text-xs uppercase tracking-wider rounded-xs hover:bg-[#38342F] disabled:opacity-50 cursor-pointer"
+                className="px-4 py-2.5 bg-[#262421] text-[#FDFBF7] text-xs uppercase tracking-wider rounded-xs hover:bg-[#38342F] disabled:opacity-50 cursor-pointer active:bg-[#38342F]"
               >
                 {promoApplied ? 'Applied' : 'Apply'}
               </button>
@@ -266,7 +271,7 @@ export const CartDrawer: React.FC = () => {
             <button
               id="cart-proceed-checkout-btn"
               onClick={handleCheckout}
-              className="w-full py-3.5 bg-[#191816] text-[#FDFBF7] text-xs font-medium uppercase tracking-[0.18em] rounded-xs hover:bg-[#38342F] transition-all flex items-center justify-center space-x-2 shadow-xs cursor-pointer"
+              className="w-full py-3.5 bg-[#191816] text-[#FDFBF7] text-xs font-semibold uppercase tracking-[0.18em] rounded-xs hover:bg-[#38342F] transition-all flex items-center justify-center space-x-2 shadow-xs cursor-pointer active:bg-[#38342F]"
             >
               <span>Proceed to Checkout</span>
               <ArrowRight size={14} />

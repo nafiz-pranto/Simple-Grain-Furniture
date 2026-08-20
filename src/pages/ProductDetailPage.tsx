@@ -574,13 +574,16 @@ export const ProductDetailPage: React.FC = () => {
 
       {/* Sticky Mobile Add-to-Bag Bar */}
       {showStickyBar && (
-        <div className="lg:hidden fixed bottom-0 inset-x-0 bg-[#FAF8F5]/95 backdrop-luxury border-t border-[#E5DECF] p-3.5 z-40 flex items-center justify-between shadow-lg animate-slide-up">
+        <div
+          className="lg:hidden fixed bottom-0 inset-x-0 bg-[#FAF8F5]/98 backdrop-luxury border-t border-[#E5DECF] px-4 py-3 z-40 flex items-center justify-between shadow-2xl animate-slide-up"
+          style={{ paddingBottom: 'max(0.75rem, env(safe-area-inset-bottom))' }}
+        >
           <div className="flex items-center space-x-2.5 min-w-0 mr-3">
             <img
               src={product.images.primary}
               alt=""
               referrerPolicy="no-referrer"
-              className="w-10 h-10 object-cover bg-[#F4EFEA] shrink-0"
+              className="w-11 h-11 object-cover bg-[#F4EFEA] shrink-0 rounded-xs"
             />
             <div className="min-w-0">
               <span className="font-serif text-sm font-medium text-[#141311] block truncate">
@@ -594,7 +597,7 @@ export const ProductDetailPage: React.FC = () => {
 
           <button
             onClick={() => addToCart(product, selectedFinish, 1)}
-            className="px-5 py-2.5 bg-[#141311] text-[#FAF8F5] text-xs font-semibold uppercase tracking-[0.18em] rounded-xs shrink-0 cursor-pointer"
+            className="px-5 py-3 bg-[#141311] text-[#FAF8F5] text-xs font-semibold uppercase tracking-[0.18em] rounded-xs shrink-0 cursor-pointer shadow-sm active:bg-[#3D3934]"
           >
             Add to Bag
           </button>

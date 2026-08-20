@@ -157,14 +157,14 @@ export const CheckoutPage: React.FC = () => {
             <div className="lg:col-span-7 space-y-8">
               
               {/* Section 1: Customer Contact */}
-              <div className="bg-[#FDFBF7] p-6 sm:p-8 rounded-xs border border-[#EFEAE1] space-y-4">
-                <h3 className="font-serif text-xl text-[#191816] font-medium">
+              <div className="bg-[#FDFBF7] p-5 sm:p-8 rounded-xs border border-[#EFEAE1] space-y-4">
+                <h3 className="font-serif text-lg sm:text-xl text-[#191816] font-medium">
                   1. Contact Information
                 </h3>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs uppercase tracking-wider font-semibold text-[#191816] mb-1">
+                    <label className="block text-xs uppercase tracking-wider font-semibold text-[#191816] mb-1 font-mono">
                       Full Name *
                     </label>
                     <input
@@ -172,11 +172,11 @@ export const CheckoutPage: React.FC = () => {
                       required
                       value={customer.name}
                       onChange={(e) => setCustomer({ ...customer, name: e.target.value })}
-                      className="w-full bg-[#F5F2EB] border border-[#E2D9CA] rounded-xs px-3.5 py-2 text-xs text-[#191816]"
+                      className="w-full bg-[#F5F2EB] border border-[#E2D9CA] rounded-xs px-3.5 py-2.5 text-sm sm:text-xs text-[#191816] focus:outline-none focus:border-[#191816]"
                     />
                   </div>
                   <div>
-                    <label className="block text-xs uppercase tracking-wider font-semibold text-[#191816] mb-1">
+                    <label className="block text-xs uppercase tracking-wider font-semibold text-[#191816] mb-1 font-mono">
                       Phone Number *
                     </label>
                     <input
@@ -184,13 +184,13 @@ export const CheckoutPage: React.FC = () => {
                       required
                       value={customer.phone}
                       onChange={(e) => setCustomer({ ...customer, phone: e.target.value })}
-                      className="w-full bg-[#F5F2EB] border border-[#E2D9CA] rounded-xs px-3.5 py-2 text-xs text-[#191816] font-mono"
+                      className="w-full bg-[#F5F2EB] border border-[#E2D9CA] rounded-xs px-3.5 py-2.5 text-sm sm:text-xs text-[#191816] font-mono focus:outline-none focus:border-[#191816]"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-xs uppercase tracking-wider font-semibold text-[#191816] mb-1">
+                  <label className="block text-xs uppercase tracking-wider font-semibold text-[#191816] mb-1 font-mono">
                     Email Address *
                   </label>
                   <input
@@ -198,20 +198,20 @@ export const CheckoutPage: React.FC = () => {
                     required
                     value={customer.email}
                     onChange={(e) => setCustomer({ ...customer, email: e.target.value })}
-                    className="w-full bg-[#F5F2EB] border border-[#E2D9CA] rounded-xs px-3.5 py-2 text-xs text-[#191816]"
+                    className="w-full bg-[#F5F2EB] border border-[#E2D9CA] rounded-xs px-3.5 py-2.5 text-sm sm:text-xs text-[#191816] focus:outline-none focus:border-[#191816]"
                   />
                 </div>
               </div>
 
               {/* Section 2: Delivery Address in Bangladesh */}
-              <div className="bg-[#FDFBF7] p-6 sm:p-8 rounded-xs border border-[#EFEAE1] space-y-4">
-                <h3 className="font-serif text-xl text-[#191816] font-medium">
+              <div className="bg-[#FDFBF7] p-5 sm:p-8 rounded-xs border border-[#EFEAE1] space-y-4">
+                <h3 className="font-serif text-lg sm:text-xl text-[#191816] font-medium">
                   2. Residence Delivery Address (Bangladesh)
                 </h3>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs uppercase tracking-wider font-semibold text-[#191816] mb-1">
+                    <label className="block text-xs uppercase tracking-wider font-semibold text-[#191816] mb-1 font-mono">
                       Division
                     </label>
                     <select
@@ -220,7 +220,7 @@ export const CheckoutPage: React.FC = () => {
                         setDivision(e.target.value);
                         setDistrict(e.target.value);
                       }}
-                      className="w-full bg-[#F5F2EB] border border-[#E2D9CA] rounded-xs px-3.5 py-2 text-xs text-[#191816]"
+                      className="w-full bg-[#F5F2EB] border border-[#E2D9CA] rounded-xs px-3.5 py-2.5 text-sm sm:text-xs text-[#191816] focus:outline-none focus:border-[#191816]"
                     >
                       {bangladeshDivisions.map((div) => (
                         <option key={div} value={div}>{div} Division</option>
@@ -229,7 +229,7 @@ export const CheckoutPage: React.FC = () => {
                   </div>
 
                   <div>
-                    <label className="block text-xs uppercase tracking-wider font-semibold text-[#191816] mb-1">
+                    <label className="block text-xs uppercase tracking-wider font-semibold text-[#191816] mb-1 font-mono">
                       District / City
                     </label>
                     <input
@@ -237,13 +237,13 @@ export const CheckoutPage: React.FC = () => {
                       value={district}
                       onChange={(e) => setDistrict(e.target.value)}
                       placeholder="e.g. Dhaka (Gulshan / Banani / Dhanmondi)"
-                      className="w-full bg-[#F5F2EB] border border-[#E2D9CA] rounded-xs px-3.5 py-2 text-xs text-[#191816]"
+                      className="w-full bg-[#F5F2EB] border border-[#E2D9CA] rounded-xs px-3.5 py-2.5 text-sm sm:text-xs text-[#191816] focus:outline-none focus:border-[#191816]"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-xs uppercase tracking-wider font-semibold text-[#191816] mb-1">
+                  <label className="block text-xs uppercase tracking-wider font-semibold text-[#191816] mb-1 font-mono">
                     Street Address & Apartment / House Number *
                   </label>
                   <input
@@ -252,12 +252,12 @@ export const CheckoutPage: React.FC = () => {
                     value={customer.address}
                     onChange={(e) => setCustomer({ ...customer, address: e.target.value })}
                     placeholder="House, Road, Block, Sector, Apartment #"
-                    className="w-full bg-[#F5F2EB] border border-[#E2D9CA] rounded-xs px-3.5 py-2 text-xs text-[#191816]"
+                    className="w-full bg-[#F5F2EB] border border-[#E2D9CA] rounded-xs px-3.5 py-2.5 text-sm sm:text-xs text-[#191816] focus:outline-none focus:border-[#191816]"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs uppercase tracking-wider font-semibold text-[#191816] mb-1">
+                  <label className="block text-xs uppercase tracking-wider font-semibold text-[#191816] mb-1 font-mono">
                     Delivery & Elevator Notes
                   </label>
                   <input
@@ -265,7 +265,7 @@ export const CheckoutPage: React.FC = () => {
                     value={customer.notes}
                     onChange={(e) => setCustomer({ ...customer, notes: e.target.value })}
                     placeholder="e.g. Elevator available, floor 4..."
-                    className="w-full bg-[#F5F2EB] border border-[#E2D9CA] rounded-xs px-3.5 py-2 text-xs text-[#191816]"
+                    className="w-full bg-[#F5F2EB] border border-[#E2D9CA] rounded-xs px-3.5 py-2.5 text-sm sm:text-xs text-[#191816] focus:outline-none focus:border-[#191816]"
                   />
                 </div>
               </div>

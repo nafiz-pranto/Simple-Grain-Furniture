@@ -76,7 +76,7 @@ export const ProductQuickViewModal: React.FC = () => {
         <button
           id="close-quickview-btn"
           onClick={handleClose}
-          className="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-[#FDFBF7]/90 text-[#262421] hover:text-[#191816] hover:bg-[#F5F2EB] flex items-center justify-center transition-colors shadow-xs"
+          className="absolute top-3 right-3 z-10 w-10 h-10 rounded-full bg-[#FDFBF7]/95 backdrop-luxury text-[#262421] hover:text-[#191816] hover:bg-[#F5F2EB] flex items-center justify-center transition-colors shadow-sm active:bg-[#EFEAE1]"
           aria-label="Close modal"
         >
           <X size={18} />

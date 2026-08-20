@@ -53,15 +53,15 @@ export const WishlistDrawer: React.FC = () => {
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="p-6 border-b border-[#EFEAE1] flex items-center justify-between bg-[#FBF9F5]">
+        <div className="p-4 sm:p-6 border-b border-[#EFEAE1] flex items-center justify-between bg-[#FBF9F5]">
           <div className="flex items-center space-x-2">
             <Heart size={18} className="text-[#191816] fill-[#191816]" />
-            <h3 className="font-serif text-xl text-[#191816] font-medium">Saved Pieces</h3>
+            <h3 className="font-serif text-lg sm:text-xl text-[#191816] font-medium">Saved Pieces</h3>
             <span className="text-xs font-mono text-[#7A746B]">({savedProducts.length})</span>
           </div>
           <button
             onClick={() => setIsWishlistOpen(false)}
-            className="p-1.5 text-[#7A746B] hover:text-[#191816] transition-colors rounded-full hover:bg-[#EFEAE1]"
+            className="w-10 h-10 flex items-center justify-center -mr-2 text-[#7A746B] hover:text-[#191816] transition-colors rounded-full hover:bg-[#EFEAE1] active:bg-[#E2D9CA]"
             aria-label="Close saved pieces"
           >
             <X size={18} />
@@ -155,13 +155,16 @@ export const WishlistDrawer: React.FC = () => {
 
         {/* Footer */}
         {savedProducts.length > 0 && (
-          <div className="p-6 bg-[#FBF9F5] border-t border-[#EFEAE1] flex flex-col space-y-3">
+          <div
+            className="p-5 sm:p-6 bg-[#FBF9F5] border-t border-[#EFEAE1] flex flex-col space-y-3"
+            style={{ paddingBottom: 'max(1.25rem, env(safe-area-inset-bottom))' }}
+          >
             <button
               onClick={() => {
                 savedProducts.forEach((p) => addToCart(p));
                 setIsWishlistOpen(false);
               }}
-              className="w-full py-3 bg-[#191816] text-[#FDFBF7] text-xs font-medium uppercase tracking-wider rounded-xs hover:bg-[#38342F] transition-all cursor-pointer"
+              className="w-full py-3.5 bg-[#191816] text-[#FDFBF7] text-xs font-semibold uppercase tracking-[0.18em] rounded-xs hover:bg-[#38342F] transition-all cursor-pointer active:bg-[#38342F]"
             >
               Add All Available to Bag
             </button>

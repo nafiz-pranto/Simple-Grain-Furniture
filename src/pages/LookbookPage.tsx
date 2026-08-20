@@ -177,14 +177,20 @@ export const LookbookPage: React.FC = () => {
 
         {/* Floating Hotspot Product Quick View Card Modal */}
         {activeHotspotProduct && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-luxury animate-fade-in">
-            <div className="bg-[#FAF8F5] max-w-md w-full p-6 space-y-5 border border-[#E5DECF] shadow-2xl relative">
-              
+          <div
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-luxury animate-fade-in"
+            onClick={() => setActiveHotspotProduct(null)}
+          >
+            <div
+              className="bg-[#FAF8F5] max-w-md w-full p-6 space-y-5 border border-[#E5DECF] shadow-2xl relative animate-scale-up"
+              onClick={(e) => e.stopPropagation()}
+            >
               <button
                 onClick={() => setActiveHotspotProduct(null)}
-                className="absolute top-4 right-4 text-xs font-mono uppercase tracking-widest text-[#7E776C] hover:text-[#141311]"
+                className="absolute top-4 right-4 w-10 h-10 flex items-center justify-center -mr-2 -mt-2 text-xs font-mono uppercase tracking-widest text-[#7E776C] hover:text-[#141311] rounded-full active:bg-[#E5DECF]/40"
+                aria-label="Close details"
               >
-                Close ✕
+                ✕
               </button>
 
               <div className="aspect-[4/3] bg-[#F4EFEA] overflow-hidden">

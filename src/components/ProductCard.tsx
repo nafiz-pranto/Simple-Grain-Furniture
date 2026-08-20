@@ -77,18 +77,18 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, priority = fa
             e.stopPropagation();
             toggleWishlist(product.id);
           }}
-          className={`absolute top-3 right-3 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 z-10 cursor-pointer ${
+          className={`absolute top-3 right-3 w-9 h-9 rounded-full flex items-center justify-center transition-all duration-300 z-10 cursor-pointer ${
             isSaved
               ? 'bg-[#141311] text-[#FAF8F5]'
-              : 'bg-[#FAF8F5]/80 backdrop-luxury text-[#5C564E] hover:text-[#141311] hover:bg-[#FAF8F5]'
+              : 'bg-[#FAF8F5]/85 backdrop-luxury text-[#5C564E] hover:text-[#141311] hover:bg-[#FAF8F5] shadow-xs'
           }`}
           aria-label={isSaved ? 'Remove from wishlist' : 'Save to wishlist'}
         >
-          <Heart size={13} fill={isSaved ? 'currentColor' : 'none'} strokeWidth={1.5} />
+          <Heart size={14} fill={isSaved ? 'currentColor' : 'none'} strokeWidth={1.5} />
         </button>
 
-        {/* Quick View Floating Pill on Hover */}
-        <div className="absolute inset-x-4 bottom-4 flex items-center justify-between opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-400 z-10">
+        {/* Quick View Floating Actions (Desktop hover & Mobile accessible) */}
+        <div className="hidden sm:flex absolute inset-x-4 bottom-4 items-center justify-between opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 z-10">
           <button
             onClick={(e) => {
               e.stopPropagation();
@@ -136,27 +136,49 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, priority = fa
           {product.primaryMaterial}
         </p>
 
-        {/* Minimal Finish Indicator Dots */}
-        <div className="pt-1.5 flex items-center justify-between">
-          <div className="flex items-center space-x-1.5">
+        {/* Minimal Finish Indicator Dots with 36px touch zone */}
+        <div className="pt-2 flex items-center justify-between">
+          <div className="flex items-center space-x-1 -ml-1">
             {product.finishOptions.map((finish) => (
               <button
                 key={finish.id}
-                onClick={() => setSelectedFinish(finish)}
-                className={`w-3 h-3 rounded-full transition-all cursor-pointer ${
-                  selectedFinish.id === finish.id
-                    ? 'ring-1.5 ring-offset-1 ring-[#141311] scale-110'
-                    : 'opacity-60 hover:opacity-100'
-                }`}
-                style={{ backgroundColor: finish.colorHex }}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setSelectedFinish(finish);
+                }}
+                className="w-7 h-7 flex items-center justify-center cursor-pointer"
                 title={`${finish.name} (${finish.woodType})`}
-              />
+                aria-label={`Select ${finish.name}`}
+              >
+                <span
+                  className={`w-3.5 h-3.5 rounded-full transition-all border border-black/10 ${
+                    selectedFinish.id === finish.id
+                      ? 'ring-2 ring-offset-1 ring-[#141311] scale-110'
+                      : 'opacity-70 hover:opacity-100'
+                  }`}
+                  style={{ backgroundColor: finish.colorHex }}
+                />
+              </button>
             ))}
           </div>
 
-          <span className="text-[10px] text-[#A29B8F] font-light">
-            {product.inStock ? 'Ready to ship' : 'Crafted to order'}
-          </span>
+          <div className="flex items-center space-x-2">
+            <span className="text-[10px] text-[#A29B8F] font-light hidden xs:inline">
+              {product.inStock ? 'In Stock' : 'To Order'}
+            </span>
+            {/* Mobile quick view button */}
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                setQuickViewProduct(product);
+              }}
+              className="sm:hidden p-1.5 text-[#5C564E] hover:text-[#141311] bg-[#F6F3ED] rounded-xs text-[10px] flex items-center space-x-1 cursor-pointer"
+              title="Quick inspect"
+            >
+              <Eye size={12} />
+              <span>Inspect</span>
+            </button>
+          </div>
         </div>
       </div>
 
